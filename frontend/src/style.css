@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'JetBrains Mono', monospace;
+  background-color: #000000;
+  color: #e5e5e5;
+  min-height: 100vh;
+}
+
+.font-serif {
+  font-family: 'Cinzel', Georgia, serif;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0) }
+  20% { transform: translate(-2px, 2px) }
+  40% { transform: translate(-2px, -2px) }
+  60% { transform: translate(2px, 2px) }
+  80% { transform: translate(2px, -2px) }
+  100% { transform: translate(0) }
+}
+
+.glitch {
+  animation: glitch 0.3s infinite;
+}
+
+@keyframes breathe {
+  0%, 100% {
+    box-shadow: 0 0 20px #d97706, inset 0 0 20px rgba(217, 119, 6, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 40px #d97706, inset 0 0 40px rgba(217, 119, 6, 0.2);
+  }
+}
+
+.breathe-glow {
+  animation: breathe 3s ease-in-out infinite;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%) }
+  100% { transform: translateY(100vh) }
+}
+
+.scanlines::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    transparent 50%,
+    rgba(0, 0, 0, 0.1) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 100;
+}
